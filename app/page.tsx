@@ -126,7 +126,7 @@ export default function Home() {
                 <TextFiled Icon={IoPersonCircleOutline} value={"Full Name"} onChangeFunction={updateName} />
                 <TextFiled
                   Icon={IoPersonCircleOutline}
-                  value={"Father's Name"}
+                  value={"Fathers Name"}
                   onChangeFunction={updateFatherName}
                 />
                 <TextFiled Icon={RiCake2Fill} value={"Date Of Birth"} onChangeFunction={updateDob}/>
@@ -164,7 +164,7 @@ export default function Home() {
                   }}
                   className="flex rounded-lg h-fit w-fit p-2 px-10 space-x-10 items-center justify-start border border-zinc-700"
                 >
-                  <label>Upload Colage I'd Card</label>
+                  <label>Upload Colage Id Card</label>
                   <input
                     type="file"
                     name="Upload A Photo"
@@ -281,7 +281,7 @@ export default function Home() {
             </div>
             <div className="flex justify-between mt-[6vh] pl-[4vh] pr-[4vh] ">
               <h3 className="flex text-xl">Sd /-</h3>
-              <h3 className="flex text-2xl">Application's Signature</h3>
+              <h3 className="flex text-2xl">Applications Signature</h3>
             </div>
           </div>
         </section>
