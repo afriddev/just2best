@@ -16,7 +16,7 @@ export async function POST(req){
        }
        else{
         return NextResponse.json({
-            message:"notFount"
+            message:"notFound"
         })
        }
     }
