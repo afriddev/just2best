@@ -21,6 +21,7 @@ export async function POST(req){
        }
     }
     catch(e){
+        return NextResponse.json({message:"serverError"})
 
     }
 

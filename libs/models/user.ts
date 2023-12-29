@@ -39,7 +39,11 @@ const userSchema = new Schema({
   },
   password:{
     type:String
+  },
+  internLocation:{
+    type:String
   }
+
   
 });
 const userModel = models.user || mongoose.model("user", userSchema);
