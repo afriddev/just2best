@@ -13,7 +13,6 @@ import connectMongoDb from "@/libs/dataBase/mongoDb";
 import jsPDF from "jspdf";
 import axios from "axios";
 import { pdfFromReact } from "generate-pdf-from-react-html";
-
 import { useState } from "react";
 export default function Home() {
   function getBase64(file) {
@@ -69,6 +68,7 @@ export default function Home() {
         console.log("error");
       });
   }
+  
 
   async function submita(
     referalMangerID,
@@ -82,7 +82,9 @@ export default function Home() {
     mobileNumber,
     emailId,
     photo,
-    idPhoto
+    idPhoto,
+    password,
+    reEnterPassword
   ) {
     const res = await fetch("api/addUser", {
       method: "POST",
@@ -102,13 +104,16 @@ export default function Home() {
         emailId: emailId,
         photo: photo,
         idPhoto: idPhoto,
+        password:password
       }),
     });
 
     if (res.ok) {
-      console.log(res);
+      alert("Please Login")
+      document.getElementById("downloadPdf").click()
     } else {
-      console.log(res);
+      alert("Something Wrong")
+      
     }
   }
   let [referalMangerID, updateReferalMangerID] = useState();
@@ -125,10 +130,7 @@ export default function Home() {
   let [idPhoto, updateIdPhoto] = useState();
   let [password, updatePassword] = useState();
   let [reEnterPassword, updateReEnterPassword] = useState();
-  function handleDownload (){
-
-    pdfFromReact(".hello", "My-file", "p", true, false)
-};
+  
   
   
   return (
@@ -296,30 +298,34 @@ export default function Home() {
                     <MdOutlineFileUpload />
                   </i>
                 </div>
-                <div
+                <a id="downloadPdf" href={"The_Grandfluence_Internship_Letter_.pdf" } download>
+                
+                </a>
+                <div 
                   onClick={() => {
-                    handleDownload()
-                    
-                    // submita(
-                    //   referalMangerID,
-                    //   name,
-                    //   fatherName,
-                    //   dob,
-                    //   course,
-                    //   collage,
-                    //   university,
-                    //   address,
-                    //   mobileNumber,
-                    //   emailId,
-                    //   photo,
-                    //   idPhoto
-                    // );
+                    submita(
+                      referalMangerID,
+                      name,
+                      fatherName,
+                      dob,
+                      course,
+                      collage,
+                      university,
+                      address,
+                      mobileNumber,
+                      emailId,
+                      photo,
+                      idPhoto,
+                      password,
+                      reEnterPassword
+                    );
                   }}
                   className=" flex justify-center items-centr bg-red-500 text-white text-xl w-fit h-fit px-4 py-2 
                                 rounded-xl "
                 >
                   sumbit
                 </div>
+                
               </div>
             </div>
           </div>

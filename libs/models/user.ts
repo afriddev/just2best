@@ -36,6 +36,9 @@ const userSchema = new Schema({
   },
   idPhoto:{
     type:String
+  },
+  password:{
+    type:String
   }
   
 });
