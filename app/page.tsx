@@ -12,6 +12,7 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import connectMongoDb from "@/libs/dataBase/mongoDb";
 import jsPDF from "jspdf";
 import axios from "axios";
+import { pdfFromReact } from "generate-pdf-from-react-html";
 
 import { useState } from "react";
 export default function Home() {
@@ -126,18 +127,16 @@ export default function Home() {
   let [reEnterPassword, updateReEnterPassword] = useState();
   function handleDownload (){
 
-    const doc = new jsPDF();
-    doc.html("<></>", {
-        callback: function (doc) {
-            doc.save('sample.pdf');
-        }
-    });
+    pdfFromReact(".hello", "My-file", "p", true, false)
 };
   
   
   return (
     <>
-      <div className=" fixed top-0 ">
+    <div className="none">
+      hello world
+    </div>
+      <div className=" fixed top-0">
         <img
           src="background.jpg"
           className="flex w-[100vw] h-[100vh] object-fill"
