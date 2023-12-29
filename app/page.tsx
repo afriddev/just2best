@@ -10,7 +10,9 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineFileUpload } from "react-icons/md";
 import connectMongoDb from "@/libs/dataBase/mongoDb";
+import jsPDF from "jspdf";
 import axios from "axios";
+
 import { useState } from "react";
 export default function Home() {
   function getBase64(file) {
@@ -122,6 +124,16 @@ export default function Home() {
   let [idPhoto, updateIdPhoto] = useState();
   let [password, updatePassword] = useState();
   let [reEnterPassword, updateReEnterPassword] = useState();
+  function handleDownload (){
+
+    const doc = new jsPDF();
+    doc.html("<></>", {
+        callback: function (doc) {
+            doc.save('sample.pdf');
+        }
+    });
+};
+  
   
   return (
     <>
@@ -287,20 +299,22 @@ export default function Home() {
                 </div>
                 <div
                   onClick={() => {
-                    submita(
-                      referalMangerID,
-                      name,
-                      fatherName,
-                      dob,
-                      course,
-                      collage,
-                      university,
-                      address,
-                      mobileNumber,
-                      emailId,
-                      photo,
-                      idPhoto
-                    );
+                    handleDownload()
+                    
+                    // submita(
+                    //   referalMangerID,
+                    //   name,
+                    //   fatherName,
+                    //   dob,
+                    //   course,
+                    //   collage,
+                    //   university,
+                    //   address,
+                    //   mobileNumber,
+                    //   emailId,
+                    //   photo,
+                    //   idPhoto
+                    // );
                   }}
                   className=" flex justify-center items-centr bg-red-500 text-white text-xl w-fit h-fit px-4 py-2 
                                 rounded-xl "
