@@ -6,9 +6,9 @@ export async function POST(req) {
   try {
     await connectMongoDb();
     try{
-      userModel.create(await req.json())
-    console.log("success")
-    return NextResponse.json({ message: "success" });
+      let result = await userModel.create(await req.json())
+      console.log(result)
+      return NextResponse.json({ message: "success" });
 
     }
     catch(e){
