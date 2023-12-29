@@ -7,6 +7,7 @@ import { CiBank } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineFileUpload } from "react-icons/md";
 import connectMongoDb from "@/libs/dataBase/mongoDb";
 import axios from "axios";
@@ -27,7 +28,7 @@ export default function Home() {
     document.getElementById("uploadPhoto").click();
   }
   async function uploadPhotoImage(e) {
-    console.log(e.target.files[0])
+    console.log(e.target.files[0]);
     var form = new FormData();
     form.append("image", e.target.files[0]);
 
@@ -38,16 +39,17 @@ export default function Home() {
       )
       .then((response) => {
         console.log("response URL", response.data.data.image.url);
-        updatePhoto(response.data.data.image.url)
+        updatePhoto(response.data.data.image.url);
       })
       .catch((error) => {
         console.log("error");
       });
-  }function uploadPhotoID() {
+  }
+  function uploadPhotoID() {
     document.getElementById("uploadPhotoID").click();
   }
   async function uploadCollageID(e) {
-    console.log(e.target.files[0])
+    console.log(e.target.files[0]);
     var form = new FormData();
     form.append("image", e.target.files[0]);
 
@@ -58,49 +60,69 @@ export default function Home() {
       )
       .then((response) => {
         console.log("response URL", response.data.data.image.url);
-        updateIdPhoto(response.data.data.image.url)
+        updateIdPhoto(response.data.data.image.url);
       })
       .catch((error) => {
         console.log("error");
       });
   }
 
-  async function submita(referalMangerID,name,fatherName,dob,course,collage,university,
-    address,mobileNumber,emailId,photo,idPhoto){
+  async function submita(
+    referalMangerID,
+    name,
+    fatherName,
+    dob,
+    course,
+    collage,
+    university,
+    address,
+    mobileNumber,
+    emailId,
+    photo,
+    idPhoto
+  ) {
     const res = await fetch("api/addUser", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          referalMangerID:referalMangerID,
-          name:name,fatherName:fatherName,dob:dob,course:course,collage:collage,university:university,
-          address:address,mobileNumber:mobileNumber,emailId:emailId,photo:photo,idPhoto:idPhoto
-        }),
-      });
-      
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        referalMangerID: referalMangerID,
+        name: name,
+        fatherName: fatherName,
+        dob: dob,
+        course: course,
+        collage: collage,
+        university: university,
+        address: address,
+        mobileNumber: mobileNumber,
+        emailId: emailId,
+        photo: photo,
+        idPhoto: idPhoto,
+      }),
+    });
 
-    if(res.ok){
-        console.log(res)
-
+    if (res.ok) {
+      console.log(res);
+    } else {
+      console.log(res);
     }
-    else{
-        console.log(res)
-    }
-    
   }
-  let [referalMangerID,updateReferalMangerID] = useState()
-  let [name,updateName] = useState()
-  let [fatherName,updateFatherName] = useState()
-  let [dob,updateDob] = useState()
-  let [course,updateCourse] = useState()
-  let [collage,updateCollage] = useState()
-  let [university,updateUniversity] = useState()
-  let [address,updateAddress] = useState()
-  let [mobileNumber,updateMobileNumber] = useState()
-  let [emailId,updateEmailID] = useState()
-  let [photo,updatePhoto] = useState()
-  let [idPhoto,updateIdPhoto] = useState()
+  let [referalMangerID, updateReferalMangerID] = useState();
+  let [name, updateName] = useState();
+  let [fatherName, updateFatherName] = useState();
+  let [dob, updateDob] = useState();
+  let [course, updateCourse] = useState();
+  let [collage, updateCollage] = useState();
+  let [university, updateUniversity] = useState();
+  let [address, updateAddress] = useState();
+  let [mobileNumber, updateMobileNumber] = useState();
+  let [emailId, updateEmailID] = useState();
+  let [photo, updatePhoto] = useState();
+  let [idPhoto, updateIdPhoto] = useState();
+  let [password, updatePassword] = useState();
+  let [reEnterPassword, updateReEnterPassword] = useState();
+  
   return (
     <>
       <div className=" fixed top-0 ">
@@ -111,28 +133,97 @@ export default function Home() {
       </div>
       <main className="ml-[5vw] p-4 mt-[5vh] bg-white rounded-xl absolute z-50 w-[90vw]">
         <section>
+          
           <div className="p-3">
+            <div className="flex  items-center justify-between mt-[3vh] sm:flex sm:flex-col ">
+              <div className="flex flex-col space-x-4 w-[50vw] sm:w-[90vw] sm:p-4">
+                <h3 className="font-bold text-2xl  ">Career</h3>
+                <p className="pt-3 flexx ">
+                  SocioSaints is a dynamic and innovative branding, marketing,
+                  and event management company dedicated to providing
+                  comprehensive and tailored solutions to enhance the visibility
+                  and success of our clients. With a passion for creativity and
+                  a commitment to excellence, we specialize in crafting unique
+                  and memorable brand experiences that resonate with target
+                  audiences and leave a lasting impression.
+                </p>
+              </div>
+              <div>
+                <img
+                  src="careerImage.webp"
+                  className="flex obejct-cover rounded-xl pr-[6vh] w-[30vw] h-[30vh] sm:w-[100vw] sm:pt-8  sm:rounded-none "
+                />
+              </div>
+            </div>
+            <div className=" pl-[3vh] mb-[5vh] flex w-[90vh] justify-between sm:w-fit sm:flex   px-10 py-4 bg-gray-100 rounded-md mt-[5vh] ml-[3vh] sm:p-3 sm:m-0 sm:text-xs
+            sm:mt-[5vh] sm:mb-[4vh] " >
+              <div className="flex flex-col space-y-3 sm:text-xs sm:w-[22vw] sm:text-center sm:flex sm:items-center sm:justify-between">
+                <h1 className="font-bold sm:text-xs text-xl border-b border-black w-fit">Criteria</h1>
+                <h2 className="text-xl sm:text-xs font-thin ">Eligibility</h2>
+                <h2 className="text-xlsm:text-xs font-thin">Duration</h2>
+                <h2 className="text-xl font-thin sm:text-xs">StiPend</h2>
+                <h2 className="font-bold text-xl sm:text-xs">Reg.Fee</h2>
+                
+              </div>
+              <div className="flex flex-col space-y-3 sm:pl-4 sm:w-[23vw] sm:text-center sm:flex sm:items-center sm:justify-center">
+                <h1 className="font-bold sm:text-xs text-xl border-b w-fit border-black">Organiser</h1>
+                <h2 className="text-xl sm:text-xs font-thin">MBA FINAL YEAR</h2>
+                <h2 className="text-xl sm:text-xs font-thin">100 days</h2>
+                <h2 className="text-xl sm:text-xs font-thin">10,000 /-</h2>
+                <h2 className="font-bold sm:text-xs text-xl">500 /-</h2>
+                
+              </div>
+              <div className="flex flex-col space-y-3 sm:pl-4 sm:w-[23vw] sm:text-center sm:flex sm:items-center sm:justify-center ">
+                <h1 className="font-bold sm:text-xs text-xl border-b w-fit border-black">Criteria</h1>
+                <h2 className="text-xl sm:text-xs font-thin">GRAND FINAL YEAR</h2>
+                <h2 className="text-xl sm:text-xs font-thin">100 days</h2>
+                <h2 className="text-xl sm:text-xs font-thin">5,000 /-</h2>
+                <h2 className="font-bold sm:text-xs text-xl">500 /-</h2>
+                
+              </div>
+            </div>
             <div>
               <label className="text-2xl font-bold ">
                 <span className=" text-red-500">Internship </span> Request Form
               </label>
             </div>
-            <div className="flex pt-14 w-full justify-evenly space-x-12 pl-6 pr-6 ">
+            <div className="flex sm:flex sm:flex-col  pt-14 w-full justify-evenly space-x-12 sm:space-x-0 pl-6 sm:pl-3 sm:pt-4 pr-6 sm:pr-0 ">
               <div className="flex flex-col space-y-6 w-full">
                 <TextFiled
                   Icon={AiOutlineFileSearch}
-                  value={"Referal Manager ID"} onChangeFunction={updateReferalMangerID}
+                  value={"Referal Manager ID"}
+                  onChangeFunction={updateReferalMangerID}
                 />
-                <TextFiled Icon={IoPersonCircleOutline} value={"Full Name"} onChangeFunction={updateName} />
+                <TextFiled
+                  Icon={IoPersonCircleOutline}
+                  value={"Full Name"}
+                  onChangeFunction={updateName}
+                />
                 <TextFiled
                   Icon={IoPersonCircleOutline}
                   value={"Fathers Name"}
                   onChangeFunction={updateFatherName}
                 />
-                <TextFiled Icon={RiCake2Fill} value={"Date Of Birth"} onChangeFunction={updateDob}/>
-                <TextFiled Icon={IoSchoolSharp} value={"Course"} onChangeFunction={updateCourse} />
-                <TextFiled Icon={IoSchoolSharp} value={"Collage"} onChangeFunction={updateCollage} />
-                <TextFiled Icon={CiBank} value={"University"} onChangeFunction={updateUniversity} />
+                <TextFiled
+                  Icon={RiCake2Fill}
+                  value={"Date Of Birth"}
+                  onChangeFunction={updateDob}
+                />
+                <TextFiled
+                  Icon={IoSchoolSharp}
+                  value={"Course"}
+                  onChangeFunction={updateCourse}
+                />
+                <TextFiled
+                  Icon={IoSchoolSharp}
+                  value={"Collage"}
+                  onChangeFunction={updateCollage}
+                />
+                <TextFiled
+                  Icon={CiBank}
+                  value={"University"}
+                  onChangeFunction={updateUniversity}
+                />
 
                 <div
                   onClick={() => {
@@ -153,10 +244,28 @@ export default function Home() {
                   </i>
                 </div>
               </div>
-              <div className="flex flex-col space-y-6 w-full">
+              <div className="flex flex-col space-y-6 w-full sm:flex sm:flex-col sm:p-0 sm:space-y-6 sm:pt-4 sm:float-start sm:-ml-[5vh]">
                 <Adress Icon={IoLocationOutline} value={"Adress"} />
-                <TextFiled Icon={FaPhoneAlt} value={"Mobile Number"} onChangeFunction={updateMobileNumber} />
-                <TextFiled Icon={MdEmail} value={"Email ID"} onChangeFunction={updateEmailID}/>
+                <TextFiled
+                  Icon={FaPhoneAlt}
+                  value={"Mobile Number"}
+                  onChangeFunction={updateMobileNumber}
+                />
+                <TextFiled
+                  Icon={MdEmail}
+                  value={"Email ID"}
+                  onChangeFunction={updateEmailID}
+                />
+                <TextFiled
+                  Icon={RiLockPasswordLine}
+                  value={"Password"}
+                  onChangeFunction={updatePassword}
+                />
+                <TextFiled
+                  Icon={MdEmail}
+                  value={"Re Enter Password"}
+                  onChangeFunction={updateReEnterPassword}
+                />
 
                 <div
                   onClick={() => {
@@ -176,112 +285,29 @@ export default function Home() {
                     <MdOutlineFileUpload />
                   </i>
                 </div>
-                <div 
-                onClick={()=>{
-                  submita(referalMangerID,name,fatherName,dob,course,collage,university,
-                    address,mobileNumber,emailId,photo,idPhoto)
-                }}
+                <div
+                  onClick={() => {
+                    submita(
+                      referalMangerID,
+                      name,
+                      fatherName,
+                      dob,
+                      course,
+                      collage,
+                      university,
+                      address,
+                      mobileNumber,
+                      emailId,
+                      photo,
+                      idPhoto
+                    );
+                  }}
                   className=" flex justify-center items-centr bg-red-500 text-white text-xl w-fit h-fit px-4 py-2 
                                 rounded-xl "
                 >
                   sumbit
                 </div>
               </div>
-            </div>
-            <div className="mt-[4vh] ml-[7vw] bg-red-600 h-[1px] w-[70vw] flex justify-center"></div>
-            <div className="mt-[2vh] text-center flex flex-col ">
-              <h2 className=" text-2xl ">
-                Please pay the registration fees to the following Bank Account
-              </h2>
-              <div className="flex  pt-[2vh] ">
-                <div className="flex flex-col justify-start text-start pl-[3vh]  space-y-2">
-                  <label className="text-lg ">
-                    Bank Name :{" "}
-                    <span className="font-bold">Kotak Mahindra Bank</span>
-                  </label>
-                  <label className="text-lg ">
-                    Account Holder Name :{" "}
-                    <span className="font-bold">
-                      Lorence Jayanand Raj Solay
-                    </span>
-                  </label>
-                  <label className="text-lg ">
-                    Account Number :{" "}
-                    <span className="font-bold">1112395954</span>
-                  </label>
-                  <label className="text-lg ">
-                    IFSC Code : <span className="font-bold">KKBK0007453</span>
-                  </label>
-                  <label className="text-lg">
-                    You may even forward to 8977362436(Paytm / Phone Pay /
-                    Google Pay)
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="mt-[4vh] ml-[7vw] bg-red-600 h-[1px] w-[70vw] flex justify-center"></div>
-            <div className="mt-[2vh] text-center flex flex-col ">
-              <h2 className=" text-2xl ">Instructions to the candidates</h2>
-              <div className="pt-[2vh] pr-[2vh]">
-                <div className="flex flex-col justify-start text-start pl-[3vh] pt-[2vh]  space-y-2">
-                  <label className="font-bold text-xl">
-                    Step 1 :{" "}
-                    <span className="font-normal">
-                      Take print of this copy and sign wherever required{" "}
-                    </span>
-                  </label>
-                  <label className="font-bold text-xl">
-                    Step 2 :{" "}
-                    <span className="font-normal">
-                      Pay the refundable* Registration fee(Rs 500/-) into the
-                      above mentioned account and take print copy of the payment
-                      reciept{" "}
-                    </span>
-                  </label>
-                  <label className="font-bold text-xl">
-                    Step 3 :{" "}
-                    <span className="font-normal">
-                      Take a picture of your identity Card(Collage ID)
-                    </span>
-                  </label>
-                  <label className="font-bold text-xl">
-                    Step 4 :{" "}
-                    <span className="font-normal">
-                      Open the site agaibn and ogin with your credentials, that
-                      you entered while registration
-                    </span>
-                  </label>
-                  <label className="font-bold text-xl">
-                    Step 5 :{" "}
-                    <span className="font-normal">
-                      upload the copies of document mentioned in above steps
-                      1,2,3. Upon submit of document after login, your payment
-                      shall be verified
-                    </span>
-                  </label>
-                  <label className="font-bold text-xl">
-                    Step 6 :{" "}
-                    <span className="font-normal">
-                      Upon successful verification, your intership Offer Letter
-                      Shall be mailed to your register mail ID.
-                    </span>
-                  </label>
-                  <label className="font-bold text-xl">
-                    Step 7 :{" "}
-                    <span className="font-normal">
-                      Submit the uploaded document to our Manger and your
-                      intership will start right away
-                    </span>
-                  </label>
-                </div>
-                <h2 className="text-xl pt-[2vh]">
-                  We Welcome you to our family.
-                </h2>
-              </div>
-            </div>
-            <div className="flex justify-between mt-[6vh] pl-[4vh] pr-[4vh] ">
-              <h3 className="flex text-xl">Sd /-</h3>
-              <h3 className="flex text-2xl">Applications Signature</h3>
             </div>
           </div>
         </section>
@@ -290,7 +316,7 @@ export default function Home() {
   );
 }
 
-function TextFiled({ Icon, value,onChangeFunction }) {
+function TextFiled({ Icon, value, onChangeFunction }) {
   return (
     <>
       <article>
@@ -305,7 +331,9 @@ function TextFiled({ Icon, value,onChangeFunction }) {
             className="border-none outline-none text-black"
             type="text"
             placeholder={value}
-            onChange={(e)=>{onChangeFunction(e.target.value)}}
+            onChange={(e) => {
+              onChangeFunction(e.target.value);
+            }}
           />
         </div>
       </article>
