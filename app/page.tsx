@@ -151,7 +151,7 @@ export default function Home() {
               <div>
                 <img
                   src="careerImage.webp"
-                  className="flex obejct-cover  pr-[6vh]  h-[30vh] w-[100vw] lg:w-[50vw]  pt-8  rounded-none "
+                  className="flex obejct-cover  pr-[6vh]  h-[30vh] w-[100vw] lg:w-[50vw] lg:h-[50vh] pt-8  rounded-none "
                 />
               </div>
             </div>
